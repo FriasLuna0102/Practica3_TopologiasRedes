@@ -6,10 +6,13 @@ import org.example.Implementacion.Node;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Star implements NetworkTopology {
     private List<Node> nodes;
     private Node hub;
+    private ExecutorService executorService;
 
     @Override
     public void configureNetwork(int numberOfNodes) {
@@ -22,12 +25,19 @@ public class Star implements NetworkTopology {
             nodes.add(node);
             connectNodes(hub, node); // Conectar todos los nodos al hub
         }
+
+        // Inicializar el ExecutorService con un número de hilos igual al número de nodos
+        executorService = Executors.newFixedThreadPool(numberOfNodes);
+        for (Node node : nodes) {
+            executorService.execute(node);
+        }
     }
 
     @Override
     public void addNode(Node node) {
         nodes.add(node);
         connectNodes(hub, node);
+        executorService.execute(node);
     }
 
     @Override
@@ -40,12 +50,8 @@ public class Star implements NetworkTopology {
     public void sendMessage(Message message) {
         Node sourceNode = getNodeById(message.getSourceId());
         if (sourceNode != null) {
-            if (sourceNode.equals(hub)) {
-                hub.sendMessage(message);
-            } else {
-                // Enviar mensaje al hub para reenviarlo al destino
-                hub.sendMessage(message);
-            }
+            // Enviar mensaje al hub para reenviarlo al destino
+            hub.sendMessage(message);
         } else {
             System.out.println("No se encontró nodo con id: " + message.getSourceId());
         }
