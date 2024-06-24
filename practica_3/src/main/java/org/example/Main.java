@@ -10,6 +10,7 @@ import org.example.Topologias.Star;
 import org.example.Topologias.FullyConnected;
 import org.example.Topologias.Tree;
 import org.example.Topologias.Switched;
+import org.example.Topologias.Hypercube;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,6 +22,7 @@ public class Main {
         NetworkTopology fullyConnectedTopology = new FullyConnected();
         NetworkTopology treeTopology = new Tree();
         NetworkTopology switchedTopology = new Switched();
+        NetworkTopology hypercubeTopology = new Hypercube();
 
         // Crear el NetworkManager
         NetworkManager networkManager = new NetworkManager();
@@ -33,9 +35,10 @@ public class Main {
         networkManager.addTopology(fullyConnectedTopology);
         networkManager.addTopology(treeTopology);
         networkManager.addTopology(switchedTopology);
+        networkManager.addTopology(hypercubeTopology);
 
         // Iniciar las redes con 5 nodos cada una
-        networkManager.startNetwork(5);
+        networkManager.startNetwork(8);
 
         // Enviar un mensaje en la topología de anillo del nodo 1 al nodo 4
         Message ringMessage = new Message(1, 4, "Hola, estoy saludando desde nodo 1 al nodo 4 en la topología de anillo.");
@@ -64,6 +67,10 @@ public class Main {
         // Enviar un mensaje en la topología de conmutador del nodo 0 al nodo 3
         Message switchedMessage = new Message(3, 0, "Hola, estoy saludando desde nodo 0 al nodo 3 en la topología de switched.");
         networkManager.sendMessage(switchedMessage);
+
+        // Enviar un mensaje en la topología de hipercubo del nodo 0 al nodo 7
+        Message hypercubeMessage = new Message(0, 7, "Hola, estoy saludando desde nodo 0 al nodo 7 en la topología de hipercubo.");
+        networkManager.sendMessage(hypercubeMessage);
 
         // Esperar un tiempo para que los mensajes se procesen
         try {
