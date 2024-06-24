@@ -9,6 +9,7 @@ import org.example.Topologias.RingNetwork;
 import org.example.Topologias.Star;
 import org.example.Topologias.FullyConnected;
 import org.example.Topologias.Tree;
+import org.example.Topologias.Switched;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,6 +20,7 @@ public class Main {
         NetworkTopology meshTopology = new Mesh();
         NetworkTopology fullyConnectedTopology = new FullyConnected();
         NetworkTopology treeTopology = new Tree();
+        NetworkTopology switchedTopology = new Switched();
 
         // Crear el NetworkManager
         NetworkManager networkManager = new NetworkManager();
@@ -30,6 +32,7 @@ public class Main {
         networkManager.addTopology(meshTopology);
         networkManager.addTopology(fullyConnectedTopology);
         networkManager.addTopology(treeTopology);
+        networkManager.addTopology(switchedTopology);
 
         // Iniciar las redes con 5 nodos cada una
         networkManager.startNetwork(5);
@@ -57,6 +60,10 @@ public class Main {
         // Enviar un mensaje en la topología de árbol del nodo 0 al nodo 4
         Message treeMessage = new Message(0, 4, "Hola, estoy saludando desde nodo 0 al nodo 4 en la topología de árbol.");
         networkManager.sendMessage(treeMessage);
+
+        // Enviar un mensaje en la topología de conmutador del nodo 0 al nodo 3
+        Message switchedMessage = new Message(3, 0, "Hola, estoy saludando desde nodo 0 al nodo 3 en la topología de switched.");
+        networkManager.sendMessage(switchedMessage);
 
         // Esperar un tiempo para que los mensajes se procesen
         try {
