@@ -3,6 +3,7 @@ package org.example;
 import org.example.Implementacion.Message;
 import org.example.Implementacion.NetworkManager;
 import org.example.Implementacion.NetworkTopology;
+import org.example.Topologias.Bus;
 import org.example.Topologias.RingNetwork;
 import org.example.Topologias.Star;
 
@@ -11,6 +12,7 @@ public class Main {
         // Crear instancias de las topologías deseadas
         NetworkTopology ringTopology = new RingNetwork();
         NetworkTopology starTopology = new Star();
+        NetworkTopology busTopology = new Bus();
 
         // Crear el NetworkManager
         NetworkManager networkManager = new NetworkManager();
@@ -18,6 +20,7 @@ public class Main {
         // Agregar las topologías al NetworkManager
         networkManager.addTopology(ringTopology);
         networkManager.addTopology(starTopology);
+        networkManager.addTopology(busTopology);
 
         // Iniciar las redes con 5 nodos cada una
         networkManager.startNetwork(5);
@@ -29,6 +32,10 @@ public class Main {
         // Enviar un mensaje en la topología de estrella del nodo 2 al nodo 3
         Message starMessage = new Message(2, 3, "Hola, estoy saludando desde nodo 2 al nodo 3 en la topología de estrella.");
         networkManager.sendMessage(starMessage);
+
+        // Enviar un mensaje en la topología de bus del nodo 0 al nodo 3
+        Message busMessage = new Message(0, 3, "Hola, estoy saludando desde nodo 0 al nodo 3 en la topología de bus.");
+        networkManager.sendMessage(busMessage);
 
         // Esperar un tiempo para que los mensajes se procesen
         try {
