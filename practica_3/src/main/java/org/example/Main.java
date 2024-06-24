@@ -8,6 +8,7 @@ import org.example.Topologias.Mesh;
 import org.example.Topologias.RingNetwork;
 import org.example.Topologias.Star;
 import org.example.Topologias.FullyConnected;
+import org.example.Topologias.Tree;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +18,7 @@ public class Main {
         NetworkTopology busTopology = new Bus();
         NetworkTopology meshTopology = new Mesh();
         NetworkTopology fullyConnectedTopology = new FullyConnected();
+        NetworkTopology treeTopology = new Tree();
 
         // Crear el NetworkManager
         NetworkManager networkManager = new NetworkManager();
@@ -27,6 +29,7 @@ public class Main {
         networkManager.addTopology(busTopology);
         networkManager.addTopology(meshTopology);
         networkManager.addTopology(fullyConnectedTopology);
+        networkManager.addTopology(treeTopology);
 
         // Iniciar las redes con 5 nodos cada una
         networkManager.startNetwork(5);
@@ -50,6 +53,10 @@ public class Main {
         // Enviar un mensaje en la topología completamente conectada del nodo 0 al nodo 3
         Message fullyConnectedMessage = new Message(1, 4, "Hola, estoy saludando desde nodo 0 al nodo 3 en la topología fully connected.");
         networkManager.sendMessage(fullyConnectedMessage);
+
+        // Enviar un mensaje en la topología de árbol del nodo 0 al nodo 4
+        Message treeMessage = new Message(0, 4, "Hola, estoy saludando desde nodo 0 al nodo 4 en la topología de árbol.");
+        networkManager.sendMessage(treeMessage);
 
         // Esperar un tiempo para que los mensajes se procesen
         try {
