@@ -159,5 +159,6 @@ Aqui en el main es como instanciamos las topologias:
 
 
 Nodo 4 recibió mensaje: Message{sourceId=1, destinationId=4, content='Hola, estoy saludando desde nodo 1 al nodo 4 en la topología de anillo.'}. Proveniente del nodo: 1
+
 Nodo 3 recibió mensaje: Message{sourceId=2, destinationId=3, content='Hola, estoy saludando desde nodo 2 al nodo 3 en la topología de estrella.'}. Proveniente del nodo: 2
 
