@@ -51,8 +51,8 @@ Para la gestion se utilizo la siguiente estructura:
 -List<Node> getNodes();                   //Este metodo retorna la lista de los nodos.
 
 
-## En nuestra clase de Menssage contamos con 3 atributos, los cuales son el sourceId (quien envia el msj), el destination (hacia quien se envia), y el content (cuerpo del mensaje).
-## Luego simplemtente se tiene el constructor, y ademas, un metodo para convertir el objeto de mensaje en un String con el siguiente formato:
+En nuestra clase de Menssage contamos con 3 atributos, los cuales son el sourceId (quien envia el msj), el destination (hacia quien se envia), y el content (cuerpo del mensaje).
+Luego simplemtente se tiene el constructor, y ademas, un metodo para convertir el objeto de mensaje en un String con el siguiente formato:
 
 "Message{" +
                 "sourceId=" + sourceId +
@@ -61,40 +61,40 @@ Para la gestion se utilizo la siguiente estructura:
                 '}';
                 
                 
-## Posteriormente, tenemos la clase NetworkManager, en la cual se implementan los metodos como addTopology, 
-## startNetwork, sendMenssage, shutdownNetwork y getNodeById.
+Posteriormente, tenemos la clase NetworkManager, en la cual se implementan los metodos como addTopology, 
+startNetwork, sendMenssage, shutdownNetwork y getNodeById.
 
-## Esta sera nuestra clase encargada de la gestion de las topologias, siempre que se cree una instancia de una topologia debe 
-## ser pasada al NetworkManager para poder tener acceso a los metodos.
+Esta sera nuestra clase encargada de la gestion de las topologias, siempre que se cree una instancia de una topologia debe 
+ser pasada al NetworkManager para poder tener acceso a los metodos.
 
-## En el metodo de startNetwork es que inicializamos el ExecutorServices para hacer uso de la concurrencia, luego
-## recorremos la lista de nodo, para pasarlo a executorServices.
+En el metodo de startNetwork es que inicializamos el ExecutorServices para hacer uso de la concurrencia, luego
+recorremos la lista de nodo, para pasarlo a executorServices.
 
-## En el metodo sendMenssage se recibe el mensaje, se verifica que el nodo de destino sea diferente de null, para asegurarnos
-## de que el msj no va hacia un destino sin definir.
+En el metodo sendMenssage se recibe el mensaje, se verifica que el nodo de destino sea diferente de null, para asegurarnos
+de que el msj no va hacia un destino sin definir.
 
-## Finalmente, en la clase de Node, esta implementa de Runnable para conseguir el paralelismo, cuenta con 3 atributos, el id, la lista de vecinos (nodos), y el
-## messageQueue que es un BlockingQueue.
+Finalmente, en la clase de Node, esta implementa de Runnable para conseguir el paralelismo, cuenta con 3 atributos, el id, la lista de vecinos (nodos), y el
+messageQueue que es un BlockingQueue.
 
-## Ademas, cuenta con el metodo run, el cual es que vuelve esto paralelo y concurrente. Este metodo es el que se encarga de recorrer los hilos, siempre y cuando no sean interrumpidos 
-## hasta recibir todos los msj y enviarlos.
+Ademas, cuenta con el metodo run, el cual es que vuelve esto paralelo y concurrente. Este metodo es el que se encarga de recorrer los hilos, siempre y cuando no sean interrumpidos 
+hasta recibir todos los msj y enviarlos.
 
-## Ya luego simplemente se hace la gestion de recibir los mensajes, y enviarlos.
-
-
-## Para las topologias simplemente se creo una clase para cada una de las implementaciones,
-## cada implementacion es similar, usan el metodo configureNetwork, donde se gestiona
-## el como se implementara la Network, aqui utilizamos concurrencia y semafaros en ocasiones 
-## para controlar los envios de msj de los nodos.
-
-## Tambien esta el uso del metodo connectNodes para conectar dos nodos, tambien sendMenssage, etc.
+Ya luego simplemente se hace la gestion de recibir los mensajes, y enviarlos.
 
 
+Para las topologias simplemente se creo una clase para cada una de las implementaciones,
+cada implementacion es similar, usan el metodo configureNetwork, donde se gestiona
+el como se implementara la Network, aqui utilizamos concurrencia y semafaros en ocasiones 
+para controlar los envios de msj de los nodos.
 
-### Deberiamos saber o ser conciente que el uso de estas topologias dependera para que tipo de problemas necesitemos resolver,
-### no existe topologia que se adapte a todos los escenarios posibles. Aunque una de las mas utilizadas es la topologia estrella.
+Tambien esta el uso del metodo connectNodes para conectar dos nodos, tambien sendMenssage, etc.
 
-## Este programa puede ser util para el manejo de redes, siempre y cuando se tengan en cuenta las necesidades.
+
+
+Deberiamos saber o ser conciente que el uso de estas topologias dependera para que tipo de problemas necesitemos resolver,
+no existe topologia que se adapte a todos los escenarios posibles. Aunque una de las mas utilizadas es la topologia estrella.
+
+Este programa puede ser util para el manejo de redes, siempre y cuando se tengan en cuenta las necesidades.
 
 
 
@@ -155,7 +155,7 @@ Aqui en el main es como instanciamos las topologias:
         networkManager.sendMessage(starMessage);
         
         
-## Esta es la salida:
+# Esta es la salida para dos topologia unicamente, en el codigo esta para todas:
 
 
 Nodo 4 recibió mensaje: Message{sourceId=1, destinationId=4, content='Hola, estoy saludando desde nodo 1 al nodo 4 en la topología de anillo.'}. Proveniente del nodo: 1
