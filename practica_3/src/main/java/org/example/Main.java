@@ -56,8 +56,8 @@ public class Main {
         Message meshMessage = new Message(0, 4, "Hola, estoy saludando desde nodo 0 al nodo 4 en la topología de malla.");
         networkManager.sendMessage(meshMessage);
 
-        // Enviar un mensaje en la topología completamente conectada del nodo 0 al nodo 3
-        Message fullyConnectedMessage = new Message(1, 4, "Hola, estoy saludando desde nodo 0 al nodo 3 en la topología fully connected.");
+        // Enviar un mensaje en la topología completamente conectada del nodo 1 al nodo 3
+        Message fullyConnectedMessage = new Message(1, 4, "Hola, estoy saludando desde nodo 1 al nodo 3 en la topología fully connected.");
         networkManager.sendMessage(fullyConnectedMessage);
 
         // Enviar un mensaje en la topología de árbol del nodo 0 al nodo 4
@@ -65,7 +65,7 @@ public class Main {
         networkManager.sendMessage(treeMessage);
 
         // Enviar un mensaje en la topología de conmutador del nodo 0 al nodo 3
-        Message switchedMessage = new Message(3, 0, "Hola, estoy saludando desde nodo 0 al nodo 3 en la topología de switched.");
+        Message switchedMessage = new Message(0, 0, "Hola, estoy saludando desde nodo 0 al nodo 3 en la topología de switched.");
         networkManager.sendMessage(switchedMessage);
 
         // Enviar un mensaje en la topología de hipercubo del nodo 0 al nodo 7
