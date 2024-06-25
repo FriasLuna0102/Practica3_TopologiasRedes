@@ -53,23 +53,23 @@ public class Main {
         networkManager.sendMessage(busMessage);
 
         // Enviar un mensaje en la topología de malla del nodo 0 al nodo 4
-        Message meshMessage = new Message(0, 4, "Hola, estoy saludando desde nodo 0 al nodo 4 en la topología de malla.");
+        Message meshMessage = new Message(4, 6, "Hola, estoy saludando desde nodo 0 al nodo 4 en la topología de malla.");
         networkManager.sendMessage(meshMessage);
 
         // Enviar un mensaje en la topología completamente conectada del nodo 1 al nodo 3
-        Message fullyConnectedMessage = new Message(1, 4, "Hola, estoy saludando desde nodo 1 al nodo 3 en la topología fully connected.");
+        Message fullyConnectedMessage = new Message(5, 7, "Hola, estoy saludando desde nodo 1 al nodo 3 en la topología fully connected.");
         networkManager.sendMessage(fullyConnectedMessage);
 
         // Enviar un mensaje en la topología de árbol del nodo 0 al nodo 4
-        Message treeMessage = new Message(0, 4, "Hola, estoy saludando desde nodo 0 al nodo 4 en la topología de árbol.");
+        Message treeMessage = new Message(1, 3, "Hola, estoy saludando desde nodo 0 al nodo 4 en la topología de árbol.");
         networkManager.sendMessage(treeMessage);
 
         // Enviar un mensaje en la topología de conmutador del nodo 0 al nodo 3
-        Message switchedMessage = new Message(0, 0, "Hola, estoy saludando desde nodo 0 al nodo 3 en la topología de switched.");
+        Message switchedMessage = new Message(2, 6, "Hola, estoy saludando desde nodo 0 al nodo 3 en la topología de switched.");
         networkManager.sendMessage(switchedMessage);
 
         // Enviar un mensaje en la topología de hipercubo del nodo 0 al nodo 7
-        Message hypercubeMessage = new Message(0, 7, "Hola, estoy saludando desde nodo 0 al nodo 7 en la topología de hipercubo.");
+        Message hypercubeMessage = new Message(3, 5, "Hola, estoy saludando desde nodo 0 al nodo 7 en la topología de hipercubo.");
         networkManager.sendMessage(hypercubeMessage);
 
         // Esperar un tiempo para que los mensajes se procesen
